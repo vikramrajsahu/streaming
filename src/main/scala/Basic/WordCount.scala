@@ -14,7 +14,7 @@ object WordCount {
   /**
    * Create Spark Session
    */
-  val spark = SparkSession.builder()
+  val spark:SparkSession = SparkSession.builder()
     .appName("Word Count")
     .master("local[2]")
     .getOrCreate()
@@ -47,14 +47,14 @@ object WordCount {
 
   def main(args: Array[String]): Unit = {
 
-    if(args(0) == "socket") {
+    if(args.length > 0 && args(0) == "socket") {
       val lines: DStream[String] = this.readSocketStream()
       this.performTransformation(lines)
-    } else if(args(0) == "file") {
+    } else if(args.length > 0 && args(0) == "file") {
       val lines: DStream[String] = this.readFileStream()
       this.performTransformation(lines)
     } else {
-      println("Invalid Option.")
+      println("Invalid Option. Please provide either 'file' or 'socket' as option.")
       return
     }
 
