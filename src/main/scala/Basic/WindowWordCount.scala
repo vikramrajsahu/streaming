@@ -6,11 +6,8 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object WindowWordCount {
 
-  val microBatchDuration = 10
   val host = "localhost"
   val port = 46666
-  val dirPath = "src/main/resources"
-
   /**
    * Create Spark Session
    */
@@ -27,14 +24,6 @@ object WindowWordCount {
    */
   def readSocketStream(): DStream[String] = {
     ssc.socketTextStream(this.host, this.port)
-  }
-
-  /**
-   *  Read Stream from File
-   * @return DStream[String]
-   */
-  def readFileStream(): DStream[String] = {
-    ssc.textFileStream(this.dirPath)
   }
 
   /**

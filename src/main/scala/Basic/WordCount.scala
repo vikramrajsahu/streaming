@@ -6,7 +6,6 @@ import org.apache.spark.sql.SparkSession
 
 object WordCount {
 
-  val microBatchDuration = 10
   val host = "localhost"
   val port = 46666
   val dirPath = "src/main/resources"

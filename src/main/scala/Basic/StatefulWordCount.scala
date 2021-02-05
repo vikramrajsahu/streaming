@@ -6,10 +6,8 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object StatefulWordCount {
 
-  val microBatchDuration = 10
   val host = "localhost"
   val port = 46666
-  val dirPath = "src/main/resources"
 
   /**
    * Create Spark Session
